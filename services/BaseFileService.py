@@ -9,7 +9,7 @@ class BaseFileService:
 
     def reset_base_image (self, frame):
         self.frame_counter  += 1
-        if self.frame_counter > self.configs.get('FRAMES_TO_PERSIST'):
+        if self.frame_counter > self.configs.get('frames_to_persist'):
             self.frame_counter = 0
             self.base_image = self.thresholder_util.apply_treshold(frame)
 

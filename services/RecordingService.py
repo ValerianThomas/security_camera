@@ -1,12 +1,25 @@
+from services.VideoConfigService import VideoConfigService
 import cv2
 
+
 class RecordingService:
-    def __init__(self, configs, filename):
-        self.configs = configs
-        self.out = cv2.VideoWriter(filename, configs.get('file_extension'), 25, configs.get('video_dimension'))
-    
-    def add_frame (self, frame):
+    video_config_service: VideoConfigService
+
+    def __init__(self, filename: str, video_config_service: VideoConfigService):
+        self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
+        self.video_config_service = video_config_service
+        self.out = cv2.VideoWriter(
+            filename,
+            self.fourcc,
+            self.video_config_service.get_video_fps(),
+            (
+                self.video_config_service.get_video_width(),
+                video_config_service.get_video_height(),
+            ),
+        )
+
+    def add_frame(self, frame):
         self.out.write(frame)
-    
-    def stop_recording (self, frame):
+
+    def stop_recording(self):
         self.out.release()
