@@ -21,7 +21,7 @@ class RecordingServiceFactory:
     def _generate_filename(self):
         folder_path = self.configs.get("video_folder")
         file_extension = self.configs.get("file_extension")
-        return f"{folder_path}/{self.uuid_generator.uuid4()}.{file_extension}"
+        return f"{folder_path}/{self.uuid_generator()}.{file_extension}"
 
     def create_new_recording(self):
         return self.RecordingServiceClass(

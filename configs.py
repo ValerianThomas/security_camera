@@ -1,6 +1,8 @@
 import cv2
 
 configs = {
+    "worker_host": "localhost",
+    "worker_name": "file_transfer",
     "camera_resolution":(640, 480),
     "camera_framerate": 32,
     "max_frame_record": 100,

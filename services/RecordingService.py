@@ -7,6 +7,7 @@ class RecordingService:
 
     def __init__(self, filename: str, video_config_service: VideoConfigService):
         self.fourcc = cv2.VideoWriter_fourcc(*"XVID")
+        self.filename = filename
         self.video_config_service = video_config_service
         self.out = cv2.VideoWriter(
             filename,
@@ -23,3 +24,6 @@ class RecordingService:
 
     def stop_recording(self):
         self.out.release()
+
+    def get_file_name(self):
+        return self.filename
