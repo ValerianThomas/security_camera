@@ -14,14 +14,12 @@ def start_init(url: str):
 
 @ts.task
 def process(path:str):
-    import pdb; pdb.set_trace()
     print(f"receive url {path}")
 
 
 
 class WorqPool(MetaWorkerPool):
     def init(self, url):
-        import pdb; pdb.set_trace()
         self.broker = start_init(url)
         self.pool = WorkerPool(self.broker, start_init, workers=1)
     

@@ -1,3 +1,4 @@
+import os
 import cv2
 
 configs = {
@@ -17,5 +18,10 @@ configs = {
     "opencvtreshold_method": cv2.THRESH_BINARY,
     "min_size_contour": 100000,
     "min_euclidian_dist": 0.3,
+    "signin_api_url": os.environ.get("signin_api_url"),
+    "login_api_url": os.environ.get("login_api_url"),
+    "email": os.environ.get("email"),
+    "password": os.environ.get("password"),
+    "records_path": os.environ.get("records_path")
 
 }
